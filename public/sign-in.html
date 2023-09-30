@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Sign In</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <div class="signin">
+            <div class="signin__tabs">
+                <button type="button" class="signin__tabs__tab-btn selected" id="signin-tab">SIGN IN</button>
+                <button type="button" class="signin__tabs__tab-btn" id="signup-tab">SIGN UP</button>
+            </div>
+            <h1>Sign In</h1>
+            <form action="/sign-in" method="POST">
+                <fieldset>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </fieldset>
+                <fieldset>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </fieldset>
+                <input type="submit" value="SIGN IN">
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $('#signup-tab').click(() => {
+                $('form').attr('action', '/sign-up')
+                $('input[type=submit]').val("SIGN UP")
+                $('h1').text("Sign Up")
+                $('#password').attr('minlength', 8)
+                $('#signin-tab').removeClass('selected')
+                $('#signup-tab').addClass('selected')
+            })
+
+            $('#signin-tab').click(() => {
+                $('form').attr('action', '/sign-in')
+                $('input[type=submit]').val("SIGN IN")
+                $('h1').text("Sign In")
+                $('#password').attr('minlength', null)
+                $('#signup-tab').removeClass('selected')
+                $('#signin-tab').addClass('selected')
+            })
+        </script>
+    </body>
+</html>
